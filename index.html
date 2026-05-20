@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BITHIA | Asociación por la Igualdad</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --purple:#8A2BE2;
+  --pink:#FF4FA3;
+  --orange:#FFA63D;
+  --yellow:#FFD84D;
+  --cyan:#42D9FF;
+  --blue:#1DA1FF;
+  --dark:#0f172a;
+  --light:#f8fafc;
+  --gray:#64748b;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--light);
+  color:var(--dark);
+  overflow-x:hidden;
+}
+
+/* SCROLL BAR */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(var(--purple),var(--pink));
+  border-radius:20px;
+}
+
+/* NAVBAR */
+
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:1000;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(18px);
+  background:rgba(15,23,42,.75);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo img{
+  width:60px;
+}
+
+.logo h1{
+  color:white;
+  font-size:1.4rem;
+  font-weight:700;
+}
+
+nav ul{
+  display:flex;
+  gap:35px;
+  list-style:none;
+}
+
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  transition:.3s;
+}
+
+nav ul li a:hover{
+  color:var(--pink);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:140px 8% 80px;
+  position:relative;
+  overflow:hidden;
+  background:
+  linear-gradient(rgba(15,23,42,.78),rgba(15,23,42,.78)),
+  url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2070&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:linear-gradient(var(--purple),var(--pink));
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:.25;
+  top:-100px;
+  right:-100px;
+}
+
+.hero-content{
+  max-width:760px;
+  position:relative;
+  z-index:2;
+}
+
+.hero img{
+  width:160px;
+  margin-bottom:25px;
+}
+
+.hero h2{
+  color:white;
+  font-size:4.3rem;
+  line-height:1.05;
+  margin-bottom:25px;
+  font-weight:800;
+}
+
+.gradient{
+  background:linear-gradient(90deg,var(--purple),var(--pink),var(--orange),var(--cyan));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+  color:#e2e8f0;
+  line-height:1.9;
+  font-size:1.15rem;
+  margin-bottom:40px;
+}
+
+.buttons{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:17px 34px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.4s;
+}
+
+.btn-primary{
+  background:linear-gradient(90deg,var(--purple),var(--pink));
+  color:white;
+  box-shadow:0 12px 35px rgba(255,79,163,.35);
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+}
+
+.btn-secondary{
+  border:2px solid rgba(255,255,255,.35);
+  color:white;
+}
+
+.btn-secondary:hover{
+  background:white;
+  color:var(--dark);
+}
+
+/* SECTIONS */
+
+section{
+  padding:120px 8%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.section-title h3{
+  font-size:3rem;
+  margin-bottom:15px;
+}
+
+.section-title p{
+  max-width:760px;
+  margin:auto;
+  line-height:1.9;
+  color:var(--gray);
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:white;
+  padding:40px 35px;
+  border-radius:30px;
+  box-shadow:0 10px 40px rgba(0,0,0,.06);
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card h4{
+  font-size:1.3rem;
+  margin-bottom:15px;
+}
+
+.card p{
+  line-height:1.8;
+  color:var(--gray);
+}
+
+/* TEAM */
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:35px;
+}
+
+.team-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:30px;
+  padding:35px;
+  color:white;
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 15px 40px rgba(0,0,0,.1);
+}
+
+.team-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(15,23,42,.95), rgba(15,23,42,.25));
+}
+
+.team-content{
+  position:relative;
+  z-index:2;
+}
+
+.team-content h4{
+  font-size:1.5rem;
+  margin-bottom:10px;
+}
+
+.team-role{
+  font-weight:600;
+  margin-bottom:15px;
+  color:#fbcfe8;
+}
+
+.team-content p{
+  line-height:1.8;
+  color:#e2e8f0;
+}
+
+/* VALUES */
+
+.values{
+  background:linear-gradient(135deg,#fdf4ff,#eef9ff);
+}
+
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.value-box{
+  background:white;
+  padding:40px 30px;
+  border-radius:28px;
+  text-align:center;
+  box-shadow:0 10px 35px rgba(0,0,0,.05);
+}
+
+.value-box h4{
+  margin:18px 0;
+  font-size:1.2rem;
+}
+
+/* SESSIONS */
+
+.sessions-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+}
+
+.session{
+  background:white;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 12px 35px rgba(0,0,0,.06);
+  transition:.4s;
+}
+
+.session:hover{
+  transform:translateY(-8px);
+}
+
+.session-image{
+  height:230px;
+  background-size:cover;
+  background-position:center;
+}
+
+.session-content{
+  padding:30px;
+}
+
+.session-content h4{
+  margin-bottom:15px;
+  font-size:1.3rem;
+}
+
+.session-content p{
+  line-height:1.8;
+  color:var(--gray);
+}
+
+/* CTA */
+
+.cta{
+  margin:90px 8%;
+  border-radius:40px;
+  padding:100px 10%;
+  text-align:center;
+  color:white;
+  background:
+  linear-gradient(rgba(138,43,226,.88),rgba(255,79,163,.88)),
+  url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=2070&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+}
+
+.cta h3{
+  font-size:3rem;
+  margin-bottom:20px;
+}
+
+.cta p{
+  max-width:700px;
+  margin:auto;
+  line-height:1.9;
+  margin-bottom:35px;
+}
+
+/* FOOTER */
+
+footer{
+  background:var(--dark);
+  color:white;
+  padding:70px 8%;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+}
+
+footer h4{
+  margin-bottom:20px;
+}
+
+footer p{
+  color:#cbd5e1;
+  line-height:1.9;
+}
+
+.bottom{
+  margin-top:40px;
+  padding-top:30px;
+  border-top:1px solid rgba(255,255,255,.1);
+  text-align:center;
+  color:#94a3b8;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  nav ul{
+    display:none;
+  }
+
+  .hero h2{
+    font-size:2.8rem;
+  }
+
+  .section-title h3{
+    font-size:2.2rem;
+  }
+
+  .cta h3{
+    font-size:2.2rem;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+<img src="logo.png" alt="Logo BITHIA">
+<h1>BITHIA</h1>
+</div>
+
+<ul>
+<li><a href="#about">Nosotros</a></li>
+<li><a href="#team">Equipo</a></li>
+<li><a href="#values">Valores</a></li>
+<li><a href="#sessions">Sesiones</a></li>
+<li><a href="#contact">Contacto</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<img src="logo.png" alt="BITHIA">
+
+<h2>
+Construyendo <span class="gradient">igualdad</span>,
+autonomía y participación juvenil
+</h2>
+
+<p>
+El Proyecto BITHIA nace como una iniciativa de prevención de la violencia de género y promoción de relaciones saludables mediante educación emocional, participación comunitaria y acompañamiento juvenil.
+</p>
+
+<div class="buttons">
+
+<a href="#about" class="btn btn-primary">
+Conoce el proyecto
+</a>
+
+<a href="https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__6uFiS9UMEkyUzRFV0ZaMFNUUk80WEpMTEoyRjNEVS4u&route=shorturl"
+target="_blank"
+class="btn btn-secondary">
+
+Únete al proyecto
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="section-title">
+
+<h3>¿Quiénes somos?</h3>
+
+<p>
+La Asociación BITHIA trabaja desde una perspectiva educativa, social e inclusiva para fomentar relaciones libres de violencia y construir espacios seguros para la juventud.
+</p>
+
+</div>
+
+<div class="about-grid">
+
+<div class="card">
+<h4>Psicología</h4>
+<p>
+Acompañamiento emocional y prevención orientada al bienestar y la salud mental juvenil.
+</p>
+</div>
+
+<div class="card">
+<h4>Educación Social</h4>
+<p>
+Intervención socioeducativa basada en participación y creación de espacios seguros.
+</p>
+</div>
+
+<div class="card">
+<h4>Mediación Intercultural</h4>
+<p>
+Promoción de convivencia, inclusión y resolución pacífica de conflictos.
+</p>
+</div>
+
+<div class="card">
+<h4>Promoción de Igualdad</h4>
+<p>
+Prevención de violencias machistas y sensibilización comunitaria.
+</p>
+</div>
+
+<div class="card">
+<h4>Integración Social</h4>
+<p>
+Fortalecimiento de redes comunitarias y acompañamiento hacia la autonomía.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- TEAM -->
+
+<section id="team">
+
+<div class="section-title">
+
+<h3>Nuestro equipo</h3>
+
+<p>
+Un equipo multidisciplinar comprometido con la igualdad, la inclusión y la transformación social desde una mirada humana y comunitaria.
+</p>
+
+</div>
+
+<div class="team-grid">
+
+<div class="team-card"
+style="background-image:url('Foto Thais.jpeg');
+background-position:center top;">
+
+<div class="team-content">
+
+<h4>Thais Méndez</h4>
+
+<div class="team-role">
+Presidenta · Psicóloga experta en igualdad
+</div>
+
+<p>
+Especialista en bienestar emocional, acompañamiento juvenil y prevención de violencia de género.
+</p>
+
+</div>
+</div>
+
+<div class="team-card"
+style="background-image:url('https://drive.google.com/file/d/1WymsSca8UKQeqRraR8Z_9Gvo6nrqBQVA/view?usp=sharing');">
+
+<div class="team-content">
+
+<h4>Samuel Cabrera Pérez</h4>
+
+<div class="team-role">
+Vicepresidente · Mediación Intercultural
+</div>
+
+<p>
+Promoción de convivencia, inclusión social y participación comunitaria desde una perspectiva intercultural.
+</p>
+
+</div>
+</div>
+
+<div class="team-card"
+style="background-image:url('https://drive.google.com/file/d/1WymsSca8UKQeqRraR8Z_9Gvo6nrqBQVA/view?usp=sharing');">
+
+<div class="team-content">
+
+<h4>Santiago Ramos Niz</h4>
+
+<div class="team-role">
+Secretario · Redes Comunitarias
+</div>
+
+<p>
+Coordinación comunitaria, comunicación institucional y fortalecimiento de redes sociales.
+</p>
+
+</div>
+</div>
+
+<div class="team-card"
+style="background-image:url('https://drive.google.com/file/d/1JLwtlbxNfdnoAdGKWuVQak9heF00M7ZO/view?usp=sharing');">
+
+<div class="team-content">
+
+<h4>Natalia Cabrera García</h4>
+
+<div class="team-role">
+Promotora de Igualdad
+</div>
+
+<p>
+Especialista en igualdad, sostenibilidad e intervención juvenil con enfoque comunitario.
+</p>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- VALUES -->
+
+<section class="values" id="values">
+
+<div class="section-title">
+
+<h3>Nuestros valores</h3>
+
+<p>
+Creemos en la igualdad, la participación juvenil y la construcción de relaciones libres y saludables.
+</p>
+
+</div>
+
+<div class="values-grid">
+
+<div class="value-box">
+<h4>Igualdad</h4>
+<p>Relaciones basadas en respeto, equidad y libertad.</p>
+</div>
+
+<div class="value-box">
+<h4>Inclusión</h4>
+<p>Espacios accesibles y seguros para todas las personas.</p>
+</div>
+
+<div class="value-box">
+<h4>Participación</h4>
+<p>La juventud como protagonista activa del cambio social.</p>
+</div>
+
+<div class="value-box">
+<h4>Sostenibilidad</h4>
+<p>Compromiso social y responsabilidad comunitaria.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SESSIONS -->
+
+<section id="sessions">
+
+<div class="section-title">
+
+<h3>Itinerario de sesiones</h3>
+
+<p>
+Un recorrido educativo y participativo hacia la autonomía emocional y las relaciones saludables.
+</p>
+
+</div>
+
+<div class="sessions-grid">
+
+<div class="session">
+
+<div class="session-image"
+style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop');">
+</div>
+
+<div class="session-content">
+
+<h4>Publicidad Inversa</h4>
+
+<p>
+Análisis crítico de redes sociales, estereotipos y construcción de identidad.
+</p>
+
+</div>
+
+</div>
+
+<div class="session">
+
+<div class="session-image"
+style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop');">
+</div>
+
+<div class="session-content">
+
+<h4>¿Amor o control?</h4>
+
+<p>
+Detección de violencia psicológica y relaciones tóxicas.
+</p>
+
+</div>
+
+</div>
+
+<div class="session">
+
+<div class="session-image"
+style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop');">
+</div>
+
+<div class="session-content">
+
+<h4>Eso también es violencia</h4>
+
+<p>
+Reflexión sobre violencia invisible, dependencia emocional y autonomía.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<div class="cta">
+
+<h3>
+“Se hace camino al andar”
+</h3>
+
+<p>
+Inspirados en Antonio Machado, creemos que la igualdad y la autonomía se construyen paso a paso desde la educación y la participación colectiva.
+</p>
+
+<a href="https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__6uFiS9UMEkyUzRFV0ZaMFNUUk80WEpMTEoyRjNEVS4u&route=shorturl"
+target="_blank"
+class="btn btn-primary">
+
+Únete al proyecto
+
+</a>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+<div class="footer-grid">
+
+<div>
+<h4>BITHIA</h4>
+
+<p>
+Proyecto de prevención de violencia de género y promoción de autonomía juvenil.
+</p>
+</div>
+
+<div>
+<h4>Contacto</h4>
+
+<p>
+📍 Centro Ciudadano San Miguel de Geneto: C. Afrodita, 114, 38296 La Laguna, Santa Cruz de Tenerife<br>
+📧 bithiaigualdad@gmail.com<br>
+📱 @bithia
+</p>
+</div>
+
+<div>
+<h4>Frase</h4>
+
+<p>
+“Caminante, no hay camino, se hace camino al andar.”
+</p>
+</div>
+
+</div>
+
+<div class="bottom">
+© 2025 Asociación BITHIA — Todos los derechos reservados
+</div>
+
+</footer>
+
+</body>
+</html>
